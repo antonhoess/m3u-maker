@@ -7,9 +7,9 @@ I = 0
 
 If Unterverzeichnisse = True Then
   Auflisten Pfad
-  While I < Form1.List2.ListCount
-    If (GetAttr(Form1.List2.List(I)) And vbDirectory) = vbDirectory Then
-      Auflisten Form1.List2.List(I)
+  While I < FrmMain.List2.ListCount
+    If (GetAttr(FrmMain.List2.List(I)) And vbDirectory) = vbDirectory Then
+      Auflisten FrmMain.List2.List(I)
     End If
     I = I + 1
   Wend
@@ -31,7 +31,7 @@ Do While Name <> ""  ' Schleife beginnen.
 
 ' Verzeichnis ist.
     If (GetAttr(Pfad1 & Name) And vbDirectory) = vbDirectory Then
-      Form1.List2.AddItem Pfad1 & Name & "\"
+      FrmMain.List2.AddItem Pfad1 & Name & "\"
     End If  ' um ein Verzeichnis handelt.
   End If
   Name = Dir ' Nächsten Eintrag abrufen.
