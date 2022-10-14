@@ -24,7 +24,7 @@ Begin VB.Form FrmMain
       Height          =   495
       Left            =   4800
       Style           =   1  'Graphical
-      TabIndex        =   16
+      TabIndex        =   10
       Top             =   4320
       Width           =   1455
    End
@@ -34,7 +34,7 @@ Begin VB.Form FrmMain
       Left            =   120
       MultiSelect     =   2  'Extended
       Sorted          =   -1  'True
-      TabIndex        =   14
+      TabIndex        =   11
       ToolTipText     =   "Use drag&drop with the right mouse button to move files to output list."
       Top             =   4920
       Width           =   6135
@@ -43,7 +43,7 @@ Begin VB.Form FrmMain
       Caption         =   "Include Subdirectories"
       Height          =   195
       Left            =   120
-      TabIndex        =   13
+      TabIndex        =   4
       ToolTipText     =   "Include files of one more hierarchy level."
       Top             =   3840
       Width           =   2415
@@ -60,7 +60,7 @@ Begin VB.Form FrmMain
       Height          =   495
       Left            =   3240
       Style           =   1  'Graphical
-      TabIndex        =   12
+      TabIndex        =   9
       Top             =   4320
       Width           =   1455
    End
@@ -69,7 +69,7 @@ Begin VB.Form FrmMain
       Height          =   495
       Left            =   1680
       Style           =   1  'Graphical
-      TabIndex        =   11
+      TabIndex        =   8
       Top             =   4320
       Width           =   1455
    End
@@ -78,7 +78,7 @@ Begin VB.Form FrmMain
       Height          =   495
       Left            =   120
       Style           =   1  'Graphical
-      TabIndex        =   10
+      TabIndex        =   7
       Top             =   4320
       Width           =   1455
    End
@@ -86,7 +86,7 @@ Begin VB.Form FrmMain
       Alignment       =   1  'Right Justify
       Height          =   285
       Left            =   1560
-      TabIndex        =   9
+      TabIndex        =   3
       Text            =   "*.mp3;*.wav;*.wma;*.wmv"
       ToolTipText     =   "Patterns separated by "";""."
       Top             =   3480
@@ -96,7 +96,7 @@ Begin VB.Form FrmMain
       Caption         =   "Apply Pattern"
       Height          =   255
       Left            =   120
-      TabIndex        =   8
+      TabIndex        =   2
       Top             =   3480
       Value           =   1  'Checked
       Width           =   1335
@@ -105,7 +105,7 @@ Begin VB.Form FrmMain
       Caption         =   "Relative"
       Height          =   255
       Left            =   5280
-      TabIndex        =   7
+      TabIndex        =   6
       Top             =   3840
       Value           =   -1  'True
       Width           =   975
@@ -114,21 +114,21 @@ Begin VB.Form FrmMain
       Caption         =   "Absolute"
       Height          =   255
       Left            =   4200
-      TabIndex        =   6
+      TabIndex        =   5
       Top             =   3840
       Width           =   975
    End
    Begin VB.DirListBox DirSrc 
       Height          =   2790
       Left            =   120
-      TabIndex        =   5
+      TabIndex        =   1
       Top             =   600
       Width           =   6135
    End
    Begin VB.DriveListBox DlbSrc 
       Height          =   315
       Left            =   120
-      TabIndex        =   4
+      TabIndex        =   0
       Top             =   120
       Width           =   6135
    End
@@ -137,7 +137,7 @@ Begin VB.Form FrmMain
       Height          =   615
       Left            =   11280
       Style           =   1  'Graphical
-      TabIndex        =   3
+      TabIndex        =   15
       Top             =   9600
       Width           =   2055
    End
@@ -146,7 +146,7 @@ Begin VB.Form FrmMain
       Height          =   615
       Left            =   6480
       Style           =   1  'Graphical
-      TabIndex        =   2
+      TabIndex        =   13
       Top             =   9600
       Width           =   2055
    End
@@ -155,7 +155,7 @@ Begin VB.Form FrmMain
       Height          =   615
       Left            =   9000
       Style           =   1  'Graphical
-      TabIndex        =   1
+      TabIndex        =   14
       Top             =   9600
       Width           =   2055
    End
@@ -163,7 +163,7 @@ Begin VB.Form FrmMain
       Height          =   9420
       Left            =   6480
       MultiSelect     =   2  'Extended
-      TabIndex        =   0
+      TabIndex        =   12
       Top             =   120
       Width           =   6855
    End
@@ -183,7 +183,7 @@ Begin VB.Form FrmMain
       Caption         =   "Paths:"
       Height          =   255
       Left            =   3600
-      TabIndex        =   15
+      TabIndex        =   16
       Top             =   3840
       Width           =   495
    End
@@ -354,6 +354,18 @@ End Sub
 
 Private Sub DirSrc_Change()
     ListFiles
+End Sub
+
+Private Sub DirSrc_KeyPress(KeyAscii As Integer)
+    ' Enter to navigate to subdirectory
+    If KeyAscii = 13 Then
+        DirSrc.Path = DirSrc.List(DirSrc.ListIndex)
+    End If
+    
+    ' Backspace to navigate to parent directory
+    If KeyAscii = 8 Then
+        DirSrc.Path = Mid$(DirSrc.Path, 1, Len(DirSrc.Path) - Len(Basename(DirSrc.Path)) - 1)
+    End If
 End Sub
 
 Private Sub DlbSrc_Change()
