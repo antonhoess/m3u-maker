@@ -3,14 +3,14 @@ Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form FrmMain 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "M3U-Maker-Extended"
-   ClientHeight    =   10170
+   ClientHeight    =   10320
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   13455
    Icon            =   "FrmMain.frx":0000
    LinkTopic       =   "FrmMain"
    MaxButton       =   0   'False
-   ScaleHeight     =   678
+   ScaleHeight     =   688
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   897
    StartUpPosition =   3  'Windows Default
@@ -20,30 +20,32 @@ Begin VB.Form FrmMain
       Top             =   120
    End
    Begin VB.CommandButton CmdSelAdd 
-      Caption         =   "Hinzufügen"
+      Caption         =   "Add Selection"
       Height          =   495
-      Left            =   11760
+      Left            =   4800
       Style           =   1  'Graphical
       TabIndex        =   16
-      Top             =   4440
-      Width           =   1575
+      Top             =   4320
+      Width           =   1455
    End
    Begin VB.ListBox LstFilesSrc 
       DragIcon        =   "FrmMain.frx":0442
-      Height          =   4155
-      Left            =   6360
+      Height          =   5325
+      Left            =   120
       MultiSelect     =   2  'Extended
       Sorted          =   -1  'True
       TabIndex        =   14
-      Top             =   120
-      Width           =   6975
+      ToolTipText     =   "Use drag&drop with the right mouse button to move files to output list."
+      Top             =   4920
+      Width           =   6135
    End
    Begin VB.CheckBox ChkIncSubdir 
-      Caption         =   "Unterverzeichnisse einbinden"
+      Caption         =   "Include Subdirectories"
       Height          =   195
       Left            =   120
       TabIndex        =   13
-      Top             =   4680
+      ToolTipText     =   "Include files of one more hierarchy level."
+      Top             =   3840
       Width           =   2415
    End
    Begin MSComDlg.CommonDialog CdgMain 
@@ -54,67 +56,67 @@ Begin VB.Form FrmMain
       _Version        =   393216
    End
    Begin VB.CommandButton CmdSelInv 
-      Caption         =   "Markierung umkehren"
+      Caption         =   "Select Inverse"
       Height          =   495
-      Left            =   9960
+      Left            =   3240
       Style           =   1  'Graphical
       TabIndex        =   12
-      Top             =   4440
-      Width           =   1575
+      Top             =   4320
+      Width           =   1455
    End
    Begin VB.CommandButton CmdSelNone 
-      Caption         =   "Markierung aufheben"
+      Caption         =   "Select Nothing"
       Height          =   495
-      Left            =   8160
+      Left            =   1680
       Style           =   1  'Graphical
       TabIndex        =   11
-      Top             =   4440
-      Width           =   1575
+      Top             =   4320
+      Width           =   1455
    End
    Begin VB.CommandButton CmdSelAll 
-      Caption         =   "Alles markieren"
+      Caption         =   "Select All"
       Height          =   495
-      Left            =   6360
+      Left            =   120
       Style           =   1  'Graphical
       TabIndex        =   10
-      Top             =   4440
-      Width           =   1575
+      Top             =   4320
+      Width           =   1455
    End
    Begin VB.TextBox TxtPattern 
       Alignment       =   1  'Right Justify
       Height          =   285
-      Left            =   1920
+      Left            =   1560
       TabIndex        =   9
       Text            =   "*.mp3;*.wav;*.wma;*.wmv"
       ToolTipText     =   "Patterns separated by "";""."
-      Top             =   4320
-      Width           =   4335
+      Top             =   3480
+      Width           =   4695
    End
    Begin VB.CheckBox ChkApplyPattern 
-      Caption         =   "Pattern anwenden"
+      Caption         =   "Apply Pattern"
       Height          =   255
       Left            =   120
       TabIndex        =   8
-      Top             =   4320
+      Top             =   3480
       Value           =   1  'Checked
-      Width           =   1695
+      Width           =   1335
    End
    Begin VB.OptionButton OptPathRel 
-      Caption         =   "Relativ"
+      Caption         =   "Relative"
       Height          =   255
-      Left            =   5400
+      Left            =   5280
       TabIndex        =   7
-      Top             =   4680
+      Top             =   3840
       Value           =   -1  'True
-      Width           =   855
+      Width           =   975
    End
    Begin VB.OptionButton OptPathAbs 
-      Caption         =   "Absolut"
+      Caption         =   "Absolute"
       Height          =   255
-      Left            =   4440
+      Left            =   4200
       TabIndex        =   6
-      Top             =   4680
-      Width           =   855
+      Top             =   3840
+      Width           =   975
    End
    Begin VB.DirListBox DirSrc 
       Height          =   2790
@@ -131,46 +133,58 @@ Begin VB.Form FrmMain
       Width           =   6135
    End
    Begin VB.CommandButton CmdM3uSave 
-      Caption         =   "Liste speichern"
+      Caption         =   "Save M3U-File"
       Height          =   615
-      Left            =   4440
+      Left            =   11280
       Style           =   1  'Graphical
       TabIndex        =   3
-      Top             =   3600
-      Width           =   1815
+      Top             =   9600
+      Width           =   2055
    End
    Begin VB.CommandButton CmdSelRem 
-      Caption         =   "Markierte Elemente löschen"
+      Caption         =   "Remove Selected Elements"
       Height          =   615
-      Left            =   120
+      Left            =   6480
       Style           =   1  'Graphical
       TabIndex        =   2
-      Top             =   3600
-      Width           =   1815
+      Top             =   9600
+      Width           =   2055
    End
    Begin VB.CommandButton CmdM3uOpen 
-      Caption         =   "M3U-Liste öffnen"
+      Caption         =   "Open M3U-File"
       Height          =   615
-      Left            =   2280
+      Left            =   9000
       Style           =   1  'Graphical
       TabIndex        =   1
-      Top             =   3600
-      Width           =   1815
+      Top             =   9600
+      Width           =   2055
    End
    Begin VB.ListBox LstFilesDst 
-      Height          =   4935
-      Left            =   120
+      Height          =   9420
+      Left            =   6480
       MultiSelect     =   2  'Extended
       TabIndex        =   0
-      Top             =   5040
-      Width           =   13215
+      Top             =   120
+      Width           =   6855
+   End
+   Begin VB.Line Line2 
+      X1              =   424
+      X2              =   424
+      Y1              =   16
+      Y2              =   672
+   End
+   Begin VB.Line Line1 
+      X1              =   16
+      X2              =   408
+      Y1              =   280
+      Y2              =   280
    End
    Begin VB.Label LblPathRelAbs 
-      Caption         =   "Pfade:"
+      Caption         =   "Paths:"
       Height          =   255
-      Left            =   3840
+      Left            =   3600
       TabIndex        =   15
-      Top             =   4680
+      Top             =   3840
       Width           =   495
    End
 End
@@ -196,14 +210,14 @@ Private Sub ChkIncSubdir_Click()
 End Sub
 
 Private Sub CmdSelAdd_Click()
-    Dim i As Integer
+    Dim I As Integer
     
     ' Append all selected files to output list
-    For i = 0 To LstFilesSrc.ListCount - 1
-        If LstFilesSrc.Selected(i) = True Then
-            LstFilesDst.AddItem (LstFilesSrc.List(i))
+    For I = 0 To LstFilesSrc.ListCount - 1
+        If LstFilesSrc.Selected(I) = True Then
+            LstFilesDst.AddItem (LstFilesSrc.List(I))
         End If
-    Next i
+    Next I
 End Sub
 
 Private Sub CmdM3uOpen_Click()
@@ -245,12 +259,12 @@ ShowOpenError:
 End Sub
 
 Private Sub CmdSelRem_Click()
-    Dim i As Integer
+    Dim I As Integer
     
     ' Remove selected files from output list
-    For i = LstFilesDst.ListCount - 1 To 0 Step -1
-        If LstFilesDst.Selected(i) = True Then LstFilesDst.RemoveItem (i)
-    Next i
+    For I = LstFilesDst.ListCount - 1 To 0 Step -1
+        If LstFilesDst.Selected(I) = True Then LstFilesDst.RemoveItem (I)
+    Next I
 End Sub
 
 Private Sub CmdM3uSave_Click()
@@ -269,16 +283,16 @@ Private Sub CmdM3uSave_Click()
     
     Dim FileNum As Integer
     Dim Line As Variant
-    Dim i As Integer
+    Dim I As Integer
     
     FileNum = FreeFile
     Open Filename For Output As FileNum
 
     ' Write file content
     Print #FileNum, "#EXTM3U"
-    For i = 0 To LstFilesDst.ListCount
-        Print #FileNum, LstFilesDst.List(i)
-    Next i
+    For I = 0 To LstFilesDst.ListCount
+        Print #FileNum, LstFilesDst.List(I)
+    Next I
     
     Close FileNum
     
@@ -286,34 +300,34 @@ ShowSaveError:
 End Sub
 
 Private Sub CmdSelAll_Click()
-    Dim i As Integer
+    Dim I As Integer
     
-    For i = 0 To LstFilesSrc.ListCount - 1
-        LstFilesSrc.Selected(i) = True
-    Next i
+    For I = 0 To LstFilesSrc.ListCount - 1
+        LstFilesSrc.Selected(I) = True
+    Next I
 End Sub
 
 Private Sub CmdSelNone_Click()
-    Dim i As Integer
+    Dim I As Integer
     
-    For i = 0 To LstFilesSrc.ListCount - 1
-        LstFilesSrc.Selected(i) = False
-    Next i
+    For I = 0 To LstFilesSrc.ListCount - 1
+        LstFilesSrc.Selected(I) = False
+    Next I
 End Sub
 
 Private Sub CmdSelInv_Click()
-    Dim i As Integer
+    Dim I As Integer
     
-    For i = 0 To LstFilesSrc.ListCount - 1
-        LstFilesSrc.Selected(i) = Not LstFilesSrc.Selected(i)
-    Next i
+    For I = 0 To LstFilesSrc.ListCount - 1
+        LstFilesSrc.Selected(I) = Not LstFilesSrc.Selected(I)
+    Next I
 End Sub
 
 Private Sub ListFiles(Optional Overwrite As Boolean = False)
     Dim Files() As String
     Dim File As String
     Dim FilePath As String
-    Dim i As Integer
+    Dim I As Integer
 
     ' First get the array of files
     Files = GetFiles(DirSrc.Path, IIf(ChkIncSubdir.Value = 0, 0, 1))
@@ -321,20 +335,20 @@ Private Sub ListFiles(Optional Overwrite As Boolean = False)
     If Not IsArrayEmpty(Files) Then
         If Not Overwrite Then LstFilesSrc.Clear
         
-        For i = 0 To UBound(Files)
-            File = Files(i)
+        For I = 0 To UBound(Files)
+            File = Files(I)
             
             ' Add files to file list only if their name matches one of the patterns
             If FileMatchPattern(CStr(File), IIf(ChkApplyPattern.Value = 1, TxtPattern.Text, "*")) Then
                 FilePath = IIf(PathAbs, DirSrc.Path & "\" & File, File)
                 
                 If Overwrite Then
-                    LstFilesSrc.List(i) = FilePath ' Change item, but bor rebuild list, to keep selection and scroll position
+                    LstFilesSrc.List(I) = FilePath ' Change item, but bor rebuild list, to keep selection and scroll position
                 Else
                     LstFilesSrc.AddItem (FilePath)
                 End If
             End If
-        Next i
+        Next I
     End If
 End Sub
 
@@ -363,18 +377,40 @@ Private Sub Form_Load()
     ListFiles ' Initialize lists
 End Sub
 
-Private Sub LstFilesDst_DragDrop(Source As Control, x As Single, Y As Single)
-    Dim i As Integer
+Private Sub LstFilesDst_DragDrop(Source As Control, X As Single, Y As Single)
+    Dim I As Integer
     
     ' Append all selected files to output list
     If Source = LstFilesSrc Then
-        For i = 0 To LstFilesSrc.ListCount - 1
-            If LstFilesSrc.Selected(i) = True Then LstFilesDst.AddItem (LstFilesSrc.List(i))
-        Next i
+        For I = 0 To LstFilesSrc.ListCount - 1
+            If LstFilesSrc.Selected(I) = True Then LstFilesDst.AddItem (LstFilesSrc.List(I))
+        Next I
     End If
 End Sub
 
-Private Sub LstFilesSrc_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub LstFilesDst_KeyUp(KeyCode As Integer, Shift As Integer)
+    Dim I As Long
+    
+    If KeyCode = vbKeyA And (Shift And vbCtrlMask = vbCtrlMask) Then
+        For I = 0 To LstFilesDst.ListCount - 1
+            LstFilesDst.Selected(I) = True
+        Next
+    End If
+    
+    If KeyCode = vbKeyDelete Then LstFilesDst.Clear
+End Sub
+
+Private Sub LstFilesSrc_KeyUp(KeyCode As Integer, Shift As Integer)
+    Dim I As Long
+    
+    If KeyCode = vbKeyA And (Shift And vbCtrlMask = vbCtrlMask) Then
+        For I = 0 To LstFilesSrc.ListCount - 1
+            LstFilesSrc.Selected(I) = True
+        Next
+    End If
+End Sub
+
+Private Sub LstFilesSrc_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     If Button = 2 Then LstFilesSrc.Drag vbBeginDrag
 End Sub
 
@@ -394,15 +430,15 @@ Private Sub OptPathRel_Click()
 End Sub
 
 Private Function Basename(ByVal Path As String) As String
-    Dim i As Integer
+    Dim I As Integer
     
     ' Check beginning at the end where the first occurrence of "\" is -> take the string after that position
-    For i = 0 To Len(Path) - 1
-        If Mid(Path, Len(Path) - i, 1) = "\" Then
-            Basename = Mid(Path, Len(Path) - i + 1, i)
+    For I = 0 To Len(Path) - 1
+        If Mid(Path, Len(Path) - I, 1) = "\" Then
+            Basename = Mid(Path, Len(Path) - I + 1, I)
             Exit Function
         End If
-    Next i
+    Next I
 End Function
 
 Private Sub TmrSrcDir_Timer()
